@@ -1,0 +1,11 @@
+# Use PHP routing for API endpoints while serving static assets directly
+Options -MultiViews
+RewriteEngine On
+
+# If the request is for an existing file or directory, serve it directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Otherwise, route everything to index.php
+RewriteRule ^ index.php [L]
